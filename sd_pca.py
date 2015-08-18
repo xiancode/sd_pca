@@ -1,8 +1,8 @@
 #!/usr/bin/env  Python
 #-*- coding=utf-8 -*-
 
-import numpy as np
 import pandas as pd
+import numpy  as np
 from sklearn.decomposition import PCA
 
 def data_set(fname):
@@ -25,9 +25,20 @@ def sd_pca(fname,components=3):
     values = cl_data.values
     pca = PCA(n_components=components)
     pca.fit(values)
+    
     print(pca.explained_variance_)
     print(pca.explained_variance_ratio_)
     print(pca.n_components)
+    print(pca.components_)
+    
+    result_col =  cl_data.columns
+    result_col.name = "指标"
+    result_idx = ["主成分"+str(i+1) for i in range(components)]
+    result_data = pd.DataFrame(pca.components_,columns=result_col,index=result_idx)
+    #result_data = result_data.astype(float)
+    result_data.to_csv("pca_result.txt",sep="\t",float_format='%8.4f')
+    print "save to pca_result.txt"
+    
     
 if __name__ == "__main__":
     sd_pca("pca_rec_2014_table.txt")

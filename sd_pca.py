@@ -2,7 +2,6 @@
 #-*- coding=utf-8 -*-
 
 import pandas as pd
-import numpy  as np
 from sklearn.decomposition import PCA
 
 def data_set(fname):

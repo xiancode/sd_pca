@@ -6,7 +6,6 @@ import numpy as np
 from sklearn.decomposition import PCA
 from sklearn import preprocessing
 from sdtool import  sdtool
-from audioop import reverse
 
 #global area_list
 

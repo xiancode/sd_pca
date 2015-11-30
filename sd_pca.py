@@ -37,7 +37,7 @@ def data_set(fname):
     pivoted = data.pivot('area','indicator','value')
     #删除空值行
     cleaned_data = pivoted.dropna(axis=0)
-    areas = pivoted.index
+    areas = cleaned_data.index
     area_list = areas.tolist()
     logging.info("selected area:"+" ".join(area_list))
     
@@ -114,7 +114,6 @@ if __name__ == "__main__":
             print 'No dataset filename specified, system with exit\n'
             sys.exit('System will exit')
     components = options.components
-    
     full_name = os.path.realpath(inFile)
     pos = full_name.find(".txt")
     result_name = full_name[:pos] + "_result.txt"
